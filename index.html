@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" class="css" />
+    <title>Meme Maker</title>
+  </head>
+  <body>
+    <canvas></canvas>
+    <!-- 
+        처음보는 태그! canvas tag는 canvas API의 창임!
+        canvas API는 WebGL API로 2D그래픽이나 3D그래픽을 그릴 수 있음
+        여기서는 2D만 할건데 WebGL은 3D하기에 정말 좋음!
+        canvas는 2D 작업에 굉장히 좋음!
+
+        canvas태그 하나 쓰면 html에 많은 element 쓸 필요 없고
+        모든게 다 자바스크립트에서 일어남!
+     -->
+    <input id="line-width" type="range" min="1" max="10" value="5" step="0.5" />
+    <div>
+      <input id="color" type="color" />
+      <div
+        class="color-option"
+        style="background-color: #1abc9c"
+        data-color="#1abc9c"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #3498db"
+        data-color="#3498db"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #34495e"
+        data-color="#34495e"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #27ae60"
+        data-color="#27ae60"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #8e44ad"
+        data-color="#8e44ad"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #f1c40f"
+        data-color="#f1c40f"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #e74c3c"
+        data-color="#e74c3c"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #95a5a6"
+        data-color="#95a5a6"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #d35400"
+        data-color="#d35400"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #bdc3c7"
+        data-color="#bdc3c7"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #2ecc71"
+        data-color="#2ecc71"
+      ></div>
+      <div
+        class="color-option"
+        style="background-color: #e67e22"
+        data-color="#e67e22"
+      ></div>
+    </div>
+    <button id="mode-btn">Fill</button>
+    <button id="reset-btn">Reset</button>
+    <button id="eraser-btn">Erase</button>
+    <script src="./02. Painting Board/02. Mouse Painting.js"></script>
+  </body>
+</html>
