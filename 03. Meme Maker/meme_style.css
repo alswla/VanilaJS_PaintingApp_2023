@@ -1,0 +1,103 @@
+@import "../reset.css";
+/* 이번에는 css만 해줄건데, rest css를 import해서 기본설정 다 해주기! */
+
+/* 
+우선 색깔은 캔버스 앞쪽에 둘 것이므로 html태그 순서 바꿔주기!
+색깔div모음들을 canvas태그 이전으로!
+그 이후 나머지 버튼들 위치하도록!
+그리고 버튼들은 하나의 div안에 위치하도록 새로 div만들어주고 btns라는 클래스명 주기!
+*/
+
+body {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: gainsboro;
+  padding: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+canvas {
+  /* css에서 canvas의 크기를 정해주기만 하면 되는게 아니라 자바스크립트에도 정의해줘야함 */
+  width: 800px;
+  height: 800px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.color-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  /* gap은 행과 열 사이의 간격을 설정! (flex, grid에 사용)  
+  내부의 자식 요소들이 일정한 간격으로 떨어져 위치할 수 있도록 사용하는 스타일 속성으로,
+  margin 과 gap의 차이점은 margin은 무조건 여백을 줘서 불필요한 공간을 만들지만, 
+  gap의 경우 엘리먼트 요소들의 사이에 인접한 요소가 있을때만 공간(space)을 만들기 때문에 훨씬 모던하다. */
+}
+.color-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid white;
+  cursor: pointer;
+  transition: ease-in-out 0.1s;
+}
+.color-option:hover {
+  transform: scale(1.2);
+}
+/* 컬러 고르는 Input에는 스타일 주기 어려움ㅜ */
+input#color {
+  background-color: white;
+  overflow: hidden;
+}
+
+/* 이제 버튼을 꾸며볼건데, 사실 버튼을 꾸미기는 매우 어려움!
+hover스타일이라던지 많은 설정을 해제하는 것으로 시작해야함!
+==> 왜냐하면 이미 hover상태도 있고, 배경색도 있고, 테두리도 있고, 모서리도 둥글고 등등 !
+    따라서 우선은 버튼을 모두 선택한 다음에 all:unset으로 다 없애줄 것!
+    이렇게 해주면 버튼의 css속성이 모두 제거됨 
+    all:unset은 기본적으로 제공되는 css속성을 모두 없애는 것임! 
+    극단적이긴 하지만 여기서는 이렇게 버튼 한번에 해줄 것! */
+button,
+label {
+  all: unset;
+  padding: 10px 0px;
+  text-align: center;
+  background-color: royalblue;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: opacity linear 0.1s;
+}
+button:hover {
+  opacity: 0.85;
+}
+input#text {
+  all: unset;
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: white;
+}
+/* 그리고 마지막으로 file input꾸며줄건데, 이게 정말 어려움! 
+하지만 이 input을 숨기고 레이블 버튼을 만들어줄 수는 있음!
+==> label안에 file태그를 넣고 file태그는 display:none을 주고 label태그를 버튼처럼 꾸며주는 것! 
+    이때 label태그를 input태그 밖에서 사용해도 상관없음! (그래도 정리하기 쉽게 안에 넣을것!)
+    ==> 그리고 나서 label에 css를 사용하기 위해 별도로 label css를 만들지 말고 
+        이미 버튼 만들어준 곳에 태그명 추가해서 다른 버튼과 동일하게 생기도록! */
+input#file {
+  display: none;
+}
+
+/* 그 외에 rest 누르면 정말 삭제하시겠습니까 알람창 나오거나
+box-shadow 추가하면 좋을 것! ==> 니꼬쌤 code 살펴보기! */

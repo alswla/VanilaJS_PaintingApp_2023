@@ -210,6 +210,8 @@ eg) 컬러 변경, 그림그리는 함수 등 */
 마지막에 실행되는 가장 기본적인 시작함수가 데이터를 받고,
 해당 데이터가 다른 데이터와 연계되어 각 함수에 맞게 들어가며
 쌓여있던 레이어가 테트리스 블럭처럼 사라져서 데이터가 유실되거나 자리를 찾지못하는 일 없이 실행될 것!
+
+하지만 연계되는 함수가 아닌 독립적인 함수일 경우 위가 아닌 밑으로 작성할 것!
 */
 
 // #2.1 - Mouse Painting
@@ -217,7 +219,7 @@ eg) 컬러 변경, 그림그리는 함수 등 */
 마우스를 움직일때마다 브러쉬를 움직이게 하는것을 해줘야하므로 addEventListener => click 해주고, 
 
 mousedown은 마우스를 누른채로 있는 것만 의마하는데, 누른채로 있으면 그려줘야하므로 
-addEventListner를 새로 추가해서 그려주는 함수 만들어야함!
+addEventListener를 새로 추가해서 그려주는 함수 만들어야함!
 ==> 그러기 위해서는 isPainting이라는 변수를 만들어줘야함
     왜냐하면, onMouseDown에는 onMove와는 별개의 함수이고 별개의 event이고
     마우스가 누르면 그리기 시작함을 알려주고 떼면 그리는 것을 멈춰야하므로 상태를 알려주기 위함!
@@ -234,7 +236,7 @@ return을 넣는 것은, 해당 값을 다시 받아야하므로임!
 ==> 우리가 클릭을 하고 누른채로 그리다가 캔버스 밖으로 마우스를 움직이고 마우스 클릭을 뗐다가 캔버스로 들어오면 
     클릭을 뗐는데도 계속 그려지고 있음!
     ==> 이유는 바로! mouseUp이벤트가 실행되지 않았기 때문! 
-        canvas.addEventListner를 해줬는데 캔버스 밖까지 마우스를 누르고 있었기 때문임
+        canvas.addEventListener를 해줬는데 캔버스 밖까지 마우스를 누르고 있었기 때문임
         그렇기 때문에 캔버스 밖에서 mouseup을 해도 캔버스 밖이므로 event가 감지되지 않음
 
 이를 해결하기 위해서 2가지 방법이 있는데, 
@@ -262,12 +264,12 @@ document.addEventListener("mouseleave", onMouseUp);
 const lineWidth = document.getElementById("line-width")
 ctx.lineWidth = lineWidth.value;
 
-그리고 나서는! input에서 range조절을 할때마다 조절된 값을 알아차릴 수 있도록 해주는 event listner를 만들것!
-range조절을 위해 change event listner를 만들고, 
+그리고 나서는! input에서 range조절을 할때마다 조절된 값을 알아차릴 수 있도록 해주는 event listener를 만들것!
+range조절을 위해 change event listener를 만들고, 
 해당 함수에 lineWidth를 event.value로 해주고, beginPath로 이전 선이 영향받지 않도록 해줌
 beginPath의 위치는 moveTo의 이전이 되어야함! (자세한 설명은 line함수 주석 참조)
 
-그리고 우리가 마지막으로 할 것은 rnage input의 또 다른 attribute!
+그리고 우리가 마지막으로 할 것은 range input의 또 다른 attribute!
 우리는 지금 range의 단계가 1부터 10까지 1단계씩 변경되게 해주고 있는데, 이 단계를 바꿔줄 수 있음
 => step 속성!
 : html에서 Input에 step="0.5" 해주면 1, 1.5, 2, 2.5 이렇게 더 세세하게 조절할 수 있음
@@ -348,7 +350,7 @@ onModeClick이라는 함수를 만들건데, 해당 함수는 모드를 바꾸�
     
     이때 조건문은 isFilling이 true면 다시 이를 false로 바꿔주도록하고, 
     isFilling이 false면 다시 이를 true로 변경해주도록 해야함!
-    (false가 채우는모드인데 나는 채우고싶지 않으면 버튼을 클릭할 것
+    (false가 그리기모드인데 나는 채우고싶다면 버튼을 클릭할 것
     --> 조건문이 실행되면 false일 경우 함수실행됨
     --> 그러면 false안의 함수는 true로 변경하도록 하여 모드를 변경해줘야함 )
     --> 그리고 추가로 버튼의 text도 변경되도록 해야함!
